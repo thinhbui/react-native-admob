@@ -1,7 +1,7 @@
 package com.sbugert.rnadmob;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
 import android.view.View;
 
 import com.facebook.react.bridge.Arguments;
@@ -116,7 +116,7 @@ class ReactAdView extends ReactViewGroup {
         sendEvent(RNAdMobBannerViewManager.EVENT_SIZE_CHANGE, event);
     }
 
-    private void sendEvent(String name, @Nullable WritableMap event) {
+    private void sendEvent(String name, @NonNull WritableMap event) {
         ReactContext reactContext = (ReactContext) getContext();
         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                         getId(),
@@ -193,7 +193,7 @@ public class RNAdMobBannerViewManager extends ViewGroupManager<ReactAdView> {
     }
 
     @Override
-    @Nullable
+    @NonNull
     public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
         MapBuilder.Builder<String, Object> builder = MapBuilder.builder();
         String[] events = {
@@ -251,7 +251,7 @@ public class RNAdMobBannerViewManager extends ViewGroupManager<ReactAdView> {
         }
     }
 
-    @Nullable
+    @NonNull
     @Override
     public Map<String, Integer> getCommandsMap() {
         return MapBuilder.of("loadBanner", COMMAND_LOAD_BANNER);
